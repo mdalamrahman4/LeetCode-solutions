@@ -9,7 +9,7 @@
  */
 class Solution {
 public:
-    void mark_parent(TreeNode*root,unordered_map<TreeNode*,TreeNode*> &parenttrack,TreeNode*target)
+    void mark_parent(TreeNode*root,unordered_map<TreeNode*,TreeNode*> &parenttrack)
     {
         queue<TreeNode*>q;
         q.push(root);
@@ -31,7 +31,7 @@ public:
     }
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         unordered_map<TreeNode*,TreeNode*>mp;
-        mark_parent(root,mp,target);
+        mark_parent(root,mp);
         unordered_map<TreeNode*,bool>vis;
         queue<TreeNode*>q;
         q.push(target);
@@ -55,7 +55,7 @@ public:
                     q.push(curr->right);
                     vis[curr->right]=true;
                 }
-                if (mp.find(curr) != mp.end() && !vis[mp[curr]])
+                if (mp[curr] && !vis[mp[curr]])
                 {
                     q.push(mp[curr]);
                     vis[mp[curr]]=true;
