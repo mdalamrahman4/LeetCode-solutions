@@ -15,7 +15,7 @@ public:
         if(!root) return 0;
         int lh=flh(root);
         int rh=frh(root);
-        if(lh==rh) return pow(2,lh)-1;
+        if(lh==rh) return (1<<lh)-1;
         return 1+countNodes(root->left)+countNodes(root->right);
     }
     int flh(TreeNode*node)
