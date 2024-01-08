@@ -10,7 +10,7 @@ public:
             } else if (curr->val > high) {
                 curr = curr->left;   
             } else {
-                if (curr->left == nullptr) {
+                if (curr->left == NULL) {
                     sum += curr->val;
                     curr = curr->right;
                 } else {
@@ -19,11 +19,11 @@ public:
                         prev = prev->right;
                     }
 
-                    if (prev->right == nullptr) {
+                    if (prev->right == NULL) {
                         prev->right = curr;
                         curr = curr->left;
                     } else {
-                        prev->right = nullptr;
+                        prev->right = NULL;
                         sum += curr->val;
                         curr = curr->right;
                     }
