@@ -11,17 +11,34 @@
  */
 class Solution {
 public:
-    int count=0;
-    void inorder(TreeNode*root,int low,int high)
-    {
-        if(!root) return;
-        if(root->val>low) inorder(root->left,low,high);
-        if(root->val>=low && root->val<=high)
-            count+=root->val;
-        if(root->val<high) inorder(root->right,low,high);
-    }
     int rangeSumBST(TreeNode* root, int low, int high) {
-        inorder(root,low,high);
-        return count;
+        int sum=0;
+        TreeNode*curr=root;
+        while(curr)
+        {
+            if(curr->left==NULL)
+            {
+                if(curr->val>=low && curr->val<=high) sum+=curr->val;
+                curr=curr->right;
+            }
+            else{
+                TreeNode*prev=curr->left;
+                while(prev->right && prev->right!=curr)
+                {
+                    prev=prev->right;
+                }
+                if(prev->right==NULL)
+                {
+                    prev->right=curr;
+                    curr=curr->left;
+                }
+                else{
+                    prev->right=NULL;
+                    if(curr->val>=low && curr->val<=high) sum+=curr->val;
+                    curr=curr->right;
+                }
+            }
+        }
+        return sum;
     }
 };
