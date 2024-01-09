@@ -56,15 +56,15 @@ class Trie{
 class Solution {
 public:
     int findMaximumXOR(vector<int>& nums) {
-        Trie trie;
+        Trie* trie=new Trie();
         for(int &it:nums)
         {
-            trie.insert(it);
+            trie->insert(it);
         }
         int mx=0;
         for(int i=1;i<nums.size();i++)
         {
-            mx=max(mx,trie.getmax(nums[i]));
+            mx=max(mx,trie->getmax(nums[i]));
         }
         return mx;
     }
