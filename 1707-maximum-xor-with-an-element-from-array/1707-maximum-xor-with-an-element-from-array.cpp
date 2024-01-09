@@ -55,27 +55,32 @@ class Trie{
 };
 class Solution {
 public:
-    vector<int> maximizeXor(vector<int>& arr, vector<vector<int>>& queries) {
-        vector<int> ans(queries.size(), 0); 
-    vector<pair<int, pair<int,int>>> offlineQueries; 
-    sort(arr.begin(), arr.end()); 
-    int index = 0;
-    for(auto &it: queries) {
-        offlineQueries.push_back({it[1],{it[0], index++}}); 
-    }
-    sort(offlineQueries.begin(), offlineQueries.end()); 
-    int i = 0; 
-    int n = arr.size(); 
-    Trie trie; 
-    
-    for(auto &it : offlineQueries) {
-        while(i < n && arr[i] <= it.first) {
-            trie.insert(arr[i]); 
-            i++; 
+    vector<int> maximizeXor(vector<int>& nums, vector<vector<int>>& queries) {
+        sort(nums.begin(),nums.end());
+        vector<pair<int,pair<int,int>>>oq;
+        int q=queries.size();
+        for(int i=0;i<q;i++)
+        {
+            oq.push_back({queries[i][1],{queries[i][0],i}});
         }
-        if(i!=0) ans[it.second.second] = trie.getmax(it.second.first); 
-        else ans[it.second.second] = -1; 
-    }
-    return ans; 
+        sort(oq.begin(),oq.end());
+        vector<int>ans(q,0);
+        int ind=0;
+        int n=nums.size();
+        Trie trie;
+        for(int i=0;i<q;i++)
+        {
+            int mi=oq[i].first;
+            int xi=oq[i].second.first;
+            int qind=oq[i].second.second;
+            while(ind<n && nums[ind]<=mi)
+            {
+                trie.insert(nums[ind]);
+                ind++;
+            }
+            if(ind!=0) ans[qind]=trie.getmax(xi); 
+            else ans[qind]=-1;
+        }
+        return ans;
     }
 };
