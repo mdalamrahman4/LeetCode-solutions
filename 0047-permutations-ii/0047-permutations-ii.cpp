@@ -18,31 +18,3 @@ public:
         return ans;
     }
 };
-/*class Solution {
-public:
-    void recur(vector<vector<int>> &ans, vector<int> nums, int index)
-    {
-        if(index == nums.size())
-        {
-            ans.emplace_back(nums);
-            return;
-        }
-
-        for(int i=index; i<nums.size(); i++)
-        {
-            if(i != index && nums[i] == nums[index])
-                continue;
-            swap(nums[i], nums[index]);
-            recur(ans, nums, index+1);
-        }
-
-    }
-    
-    vector<vector<int>> permuteUnique(vector<int>& nums) {
-        vector<vector<int>> ans;
-        sort(nums.begin(), nums.end());
-        
-        recur(ans, nums, 0);
-        return ans;
-    }
-};*/
