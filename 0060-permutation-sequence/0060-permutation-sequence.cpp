@@ -11,7 +11,7 @@ public:
         v.push_back(n);
         k=k-1;
         string ans="";
-        for(int i=1;i<=n;i++)
+        while(true)
         {
             ans+=to_string(v[k/fact]);
             v.erase(v.begin()+(k/fact));
