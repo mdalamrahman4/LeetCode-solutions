@@ -14,7 +14,7 @@ public:
     }
     
     int pop() {
-        int t=top();
+        int t=q.front();
         q.pop();
         return t;
     }
