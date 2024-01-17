@@ -10,6 +10,6 @@ public:
             if(st.count(it.second)) return false;
             st.insert(it.second);
         }
-        return mp.size()==st.size();
+        return true;
     }
 };
