@@ -7,7 +7,7 @@ public:
         int direction=0;
         vector<int>dir;
         while(left<=right && top<=bottom){
-            if(direction==0)
+            if(direction==0 && left<=right)
             {
                 for(int i=left;i<=right;i++){
                     dir.push_back(matrix[top][i]);
@@ -15,21 +15,21 @@ public:
                 direction=1;
                 top++;
             }
-            else if(direction==1){
+            if(direction==1 && top<=bottom){
                 for(int i=top;i<=bottom;i++){
                     dir.push_back(matrix[i][right]);
                 }
                 direction=2;
                 right--;
             }
-            else if(direction==2){
+            if(direction==2 && right>=left){
                 for(int i=right;i>=left;i--){
                     dir.push_back(matrix[bottom][i]);
                 }
                 bottom--;
                 direction=3;
             }
-            else if(direction==3)
+            if(direction==3 && bottom>=top)
             {
                 for(int i=bottom;i>=top;i--)
                 {
