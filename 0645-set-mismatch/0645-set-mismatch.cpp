@@ -2,12 +2,17 @@ class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
         int n=nums.size();
-        int fullsum=accumulate(nums.begin(),nums.end(),0);
-        sort(nums.begin(),nums.end());
-        nums.erase(unique(nums.begin(), nums.end()), nums.end());
-        int sum=accumulate(nums.begin(),nums.end(),0);
-        int repeatedno=fullsum-sum;
-        int missingno=(n*(n+1))/2-sum;
-        return {repeatedno,missingno};
+        int dup,mis;
+        for(int i=0;i<n;i++){
+            if((nums[abs(nums[i])-1])<0) {
+                dup=abs(nums[i]);}
+            else{
+                nums[abs(nums[i])-1]*=-1;
+            }
+        }
+        for(int i=0;i<n;i++){
+            if(nums[i]>0) mis=i+1;
+        }
+        return {dup,mis};
     }
 };
