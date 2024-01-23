@@ -14,7 +14,7 @@ public:
     }
     
     bool isUnique(string word) {
-        unordered_set<char> st;
+        set<char> st;
         for (auto ele : word) {
             if (st.find(ele) != st.end()) return false;
             st.insert(ele);
