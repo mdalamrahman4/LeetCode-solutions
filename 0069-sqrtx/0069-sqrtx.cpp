@@ -8,10 +8,10 @@ public:
             if(mid==x/mid){
                 return mid;
             }
-            else if(mid>x/mid){
-                j=mid-1;
+            else if(mid<x/mid){
+                i=mid+1;
             }
-            else i=mid+1;
+            else j=mid-1;
         }
         return j;
     }
