@@ -11,23 +11,26 @@
 class Solution {
 public:
     bool isEvenOddTree(TreeNode* root) {
-        bool even=true;
+        int level=0;
         queue<TreeNode*>q;
         q.push(root);
         while(!q.empty()){
             int sz=q.size();
-            int prev=(even)?INT_MIN:INT_MAX;
+            int prev=(level%2==0)?INT_MIN:INT_MAX;
             for(int i=0;i<sz;i++){
                 auto node=q.front();
                 q.pop();
-                if((even && (node->val%2==0 || node->val<=prev))|| (!even && (node->val%2==1 || node->val>=prev))){
+                if(level%2==0 && (node->val%2==0 || node->val<=prev)){
+                    return false;
+                }
+                else if(level%2==1 && (node->val%2==1 || node->val>=prev)){
                     return false;
                 }
                 prev=node->val;
                 if(node->left)  q.push(node->left);
                 if(node->right) q.push(node->right);
             }
-                   even=!even;
+            level++;
         }
         return true;
     }
