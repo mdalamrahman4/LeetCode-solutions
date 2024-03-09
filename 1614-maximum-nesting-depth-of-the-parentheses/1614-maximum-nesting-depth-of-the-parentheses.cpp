@@ -11,7 +11,6 @@ public:
             }
             else if(s[i]==')'){
                 cnt--;
-                mxdp=max(mxdp,cnt);
             }
         }
         return mxdp;
