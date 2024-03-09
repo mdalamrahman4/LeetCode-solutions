@@ -3,20 +3,20 @@ public:
     int longestConsecutive(vector<int>& nums) 
     {
         int n=nums.size();
-        if(n==0)    return 0;
+        if(n<=1)    return n;
         int longest=1;
-        int cnt=0;
+        int cnt=1;
         sort(nums.begin(),nums.end());
-        int prev=INT_MIN;
-        for(int i=0;i<nums.size();i++){
+        int prev=nums[0];
+        for(int i=1;i<nums.size();i++){
             if(nums[i]==prev+1){
                 cnt++;
+                longest=max(longest,cnt);
             }
             else if(nums[i]!=prev){
                 cnt=1;
             }
             prev=nums[i];
-            longest=max(longest,cnt);
         }
         return longest;
     }
