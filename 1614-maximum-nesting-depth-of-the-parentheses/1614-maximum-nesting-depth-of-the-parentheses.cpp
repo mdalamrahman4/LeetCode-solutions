@@ -7,8 +7,8 @@ public:
         for(int i=0;i<n;i++){
             if(s[i]=='('){
                 st.push('(');
-                long n=st.size();
-                mxdp=max(mxdp,(int)n);
+                int t=st.size();
+                mxdp=max(mxdp,t);
             }
             else if(s[i]==')'){
                 st.pop();
