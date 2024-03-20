@@ -17,7 +17,7 @@ public:
             copy=copy->next;
         }
         ListNode*temp1=copy;
-        while(copy && ++cnt1<=b+1){
+        while(copy && cnt1++<=b){
             copy=copy->next;
         }
         ListNode*temp2=copy->next;
