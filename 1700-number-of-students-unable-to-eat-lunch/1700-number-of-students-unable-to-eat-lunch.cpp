@@ -3,7 +3,7 @@ public:
     int countStudents(vector<int>& students, vector<int>& sandwiches) {
         int s_count=students.size(),c_sand=0,sq_sand=0;
         c_sand=count(students.begin(),students.end(),0);
-        sq_sand=count(students.begin(),students.end(),1);
+        sq_sand=s_count-c_sand;
         for(int i=0;i<students.size();i++){
             if(sandwiches[i]==0){
                 if(c_sand>0){
