@@ -1,14 +1,13 @@
 class Solution {
 public:
     int findPermutationDifference(string s, string t) {
-        vector<pair<int,int>>arr(26);
+        vector<int>arr(26,0);
         for(int i=0;i<s.size();i++){
-            arr[s[i]-'a'].first=i;
-            arr[t[i]-'a'].second=i;
+            arr[s[i]-'a']=i;
         }
         int sum=0;
-        for(int i=0;i<26;i++){
-            sum+=abs(arr[i].first-arr[i].second);
+        for(int i=0;i<t.size();i++){
+            sum+=abs(arr[t[i]-'a']-i);
         }
         return sum;
     }
