@@ -7,7 +7,8 @@ public:
         for(int i=0;i<n;i++){
             lst[s[i]-'a']=i;
             if(lst[0]!=-1 && lst[1]!=-1 && lst[2]!=-1){
-                cnt+=(1+min(lst[0],min(lst[1],lst[2])));
+                int mn=*min_element(lst.begin(),lst.end());
+                cnt+=(1+mn);
             }
         }
         return cnt;
