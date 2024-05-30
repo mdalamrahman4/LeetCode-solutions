@@ -8,7 +8,7 @@ public:
         while(r<s.size()){
             freq[s[r]-'A']++;
             mxfreq=max(freq[s[r]-'A'],mxfreq);
-            while((r-l+1)-mxfreq>k){
+            if((r-l+1)-mxfreq>k){
                 freq[s[l]-'A']--;
                 l++;
             }
