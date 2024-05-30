@@ -10,10 +10,6 @@ public:
             mxfreq=max(freq[s[r]-'A'],mxfreq);
             while((r-l+1)-mxfreq>k){
                 freq[s[l]-'A']--;
-                mxfreq=0;
-                for(int i=0;i<26;i++){
-                    mxfreq=max(mxfreq,freq[i]);
-                }
                 l++;
             }
             if((r-l+1)-mxfreq<=k){
