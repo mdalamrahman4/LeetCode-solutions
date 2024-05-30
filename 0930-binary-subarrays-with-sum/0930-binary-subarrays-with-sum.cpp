@@ -17,17 +17,6 @@ public:
         return cnt;
     }
     int numSubarraysWithSum(vector<int>& nums, int goal) {
-        /*int cnt=0;
-        for(int i=0;i<nums.size();i++){
-            int sum=0;
-            for(int j=i;j<nums.size();j++){
-                sum+=nums[j];
-                if(sum==goal)   cnt++;
-                else if(sum>goal)   break;
-            }
-        }
-        return cnt;
-        */
         return sliding(nums,goal)-sliding(nums,goal-1);
     }
 };
