@@ -2,20 +2,24 @@ class Solution {
 public:
     int characterReplacement(string s, int k) {
         int mxlen=0;
-        for(int i=0;i<s.size();i++){
-            vector<int>freq(26,0);
-            int mxfreq=0;
-            for(int j=i;j<s.size();j++){
-                freq[s[j]-'A']++;
-                mxfreq=max(mxfreq,freq[s[j]-'A']);
-                int diff=(j-i+1)-mxfreq;
-                if(diff<=k){
-                    mxlen=max(mxlen,j-i+1);
+        vector<int>freq(26,0);
+        int mxfreq=0;
+        int l=0,r=0;
+        while(r<s.size()){
+            freq[s[r]-'A']++;
+            mxfreq=max(freq[s[r]-'A'],mxfreq);
+            while((r-l+1)-mxfreq>k){
+                freq[s[l]-'A']--;
+                mxfreq=0;
+                for(int i=0;i<26;i++){
+                    mxfreq=max(mxfreq,freq[i]);
                 }
-                else{
-                    break;
-                }
+                l++;
             }
+            if((r-l+1)-mxfreq<=k){
+                mxlen=max(mxlen,r-l+1);
+            }
+            r++;
         }
         return mxlen;
     }
