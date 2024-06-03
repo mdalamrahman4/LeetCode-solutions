@@ -11,7 +11,6 @@ public:
                 i++;
             }
         }
-       // if(j==m-1)    return 0;
         return m-j;
     }
 };
