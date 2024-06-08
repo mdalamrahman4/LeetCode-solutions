@@ -1,19 +1,18 @@
 class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {
-        int n=nums.size();
-        int sum=nums[0];
-        for(int r=1;r<n;r++){
-            if(nums[r]==0 && nums[r-1]==0){
-                return true;
+        unordered_map<int,int>mp;
+        int sum=0,n=nums.size();
+        mp[0]=-1;
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            int rem=sum%k;
+            if(rem<0)   rem+=k;
+            if(mp.find(rem)!=mp.end()){
+                if(i-mp[rem]>1) return true;
             }
-            sum+=nums[r];
-            if(sum%k==0)    return true;
-            int tempsum=sum,l=0;
-            while(r>l+1 && tempsum>=k){
-                tempsum-=nums[l];
-                if(tempsum%k==0)    return true;
-                l++;
+            else{
+                mp[rem]=i;
             }
         }
         return false;
