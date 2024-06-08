@@ -10,7 +10,7 @@ public:
             sum+=nums[r];
             if(sum%k==0)    return true;
             int tempsum=sum,l=0;
-            while((r-l)>1 && tempsum>=k){
+            while(r>l+1 && tempsum>=k){
                 tempsum-=nums[l];
                 if(tempsum%k==0)    return true;
                 l++;
