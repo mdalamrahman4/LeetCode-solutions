@@ -6,13 +6,12 @@ public:
         mp[0]=-1;
         for(int i=0;i<n;i++){
             sum+=nums[i];
-            int rem=sum%k;
-            if(rem<0)   rem+=k;
-            if(mp.find(rem)!=mp.end()){
-                if(i-mp[rem]>1) return true;
+            if(k!=0)    sum%=k;
+            if(mp.find(sum)!=mp.end()){
+                if(i-mp[sum]>1) return true;
             }
             else{
-                mp[rem]=i;
+                mp[sum]=i;
             }
         }
         return false;
