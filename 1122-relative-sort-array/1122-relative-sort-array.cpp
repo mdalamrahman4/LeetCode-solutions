@@ -3,14 +3,13 @@ public:
     vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
         vector<int>mp(1001,0);
         vector<int>res;
-        for(int i=0;i<arr1.size();i++){
-            mp[arr1[i]]++;
+        for(auto &it:arr1){
+            mp[it]++;
         }
-        int t=0;
-        for(int i=0;i<arr2.size();i++){
-            while(mp[arr2[i]]>0){
-                res.push_back(arr2[i]);
-                mp[arr2[i]]--;
+        for(auto &it:arr2){
+            while(mp[it]>0){
+                res.push_back(it);
+                mp[it]--;
             }
         }
         for(int i=0;i<1001;i++){
