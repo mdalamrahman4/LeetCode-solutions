@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
-        unordered_map<int,int>mp;
+        vector<int>mp(1001,0);
         vector<int>res;
         for(int i=0;i<arr1.size();i++){
             mp[arr1[i]]++;
@@ -14,10 +14,10 @@ public:
                 mp[arr2[i]]--;
             }
         }
-        for(auto &it:mp){
-            while(it.second>0){
-                rem.push_back(it.first);
-                it.second--;
+        for(int i=0;i<1001;i++){
+            while(mp[i]>0){
+                rem.push_back(i);
+                mp[i]--;
             }
         }
         sort(rem.begin(),rem.end());
