@@ -6,7 +6,6 @@ public:
         for(int i=0;i<arr1.size();i++){
             mp[arr1[i]]++;
         }
-        vector<int>rem;
         int t=0;
         for(int i=0;i<arr2.size();i++){
             while(mp[arr2[i]]>0){
@@ -16,12 +15,10 @@ public:
         }
         for(int i=0;i<1001;i++){
             while(mp[i]>0){
-                rem.push_back(i);
+                res.push_back(i);
                 mp[i]--;
             }
         }
-        sort(rem.begin(),rem.end());
-        res.insert(res.end(),rem.begin(),rem.end());
         return res;
     }
 };
