@@ -1,19 +1,15 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        int zero=0,one=0,two=0;
+        int z=0,o=0,t=0;
         for(auto &it:nums){
-            (it!=2)?((it==1)?one++:zero++):two++;
+            if(it==0)   z++;
+            else if(it==1)  o++;
+            else    t++;
         }
         int i=0;
-        while(zero--){
-            nums[i++]=0;
-        }
-        while(one--){
-            nums[i++]=1;
-        }
-        while(two--){
-            nums[i++]=2;
-        }
+        while(z--)  nums[i++]=0;
+        while(o--)  nums[i++]=1;
+        while(t--)  nums[i++]=2;
     }
 };
