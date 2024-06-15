@@ -1,54 +1,29 @@
 class Solution {
 public:
     string minWindow(string s, string t) {
-        if (s.size() < t.size() or s.empty()) {
-            return "";
+        vector<int> chr(128, 0);  
+        for (char c : t) {
+            chr[c]++;
         }
-        
-        int i = 0, j = 0;
-        int start = -1, len = INT_MAX;
-        std::vector<int> m(128, 0);
-        
-        // Push elements of t into hash table.
-        for (auto c : t) {
-            m[c]++;
-        }
-        
-        while (j < s.size()) {
-            if (isFound(m)) {
-                // Current string contains all characters of t,
-                // then we start to shrink it from left.
-                if (j - i < len) {
-                    start = i;
-                    len = j - i;
-                }
-                m[s[i++]]++;
-                continue;
-            }
-            // Current string doesn't contain all characters of t,
-            // so we need to extend it and do checking in the next iteration.
-            m[s[j++]]--;
-        }
-        
-        // Try to shrink the last found string.
-        while (isFound(m)) {
-            if (j - i < len) {
-                start = i;
-                len = j - i;
-            }
-            m[s[i++]]++;
-        }
-        
-        if (start != -1) {
-            return s.substr(start, len);
-        }
-        return "";
-    }
 
-private:
-    // If all values of hash table are <= 0,
-    // it means all characters of t are included in current string
-    bool isFound(const std::vector<int>& m) {
-        return std::all_of(m.begin(), m.end(), [](int i) { return i <= 0; });
+        int start = 0, end = 0, cnt = t.size(), minlen = INT_MAX, mnstart = 0;
+
+        while (end < s.size()) {
+            if (chr[s[end]] > 0) cnt--;
+            chr[s[end]]--;
+            end++;
+
+            while (cnt == 0) {
+                if (end - start < minlen) {
+                    minlen = end - start;
+                    mnstart = start;
+                }
+                chr[s[start]]++;
+                if (chr[s[start]] > 0) cnt++;
+                start++;
+            }
+        }
+
+        return minlen == INT_MAX ? "" : s.substr(mnstart, minlen);
     }
 };
