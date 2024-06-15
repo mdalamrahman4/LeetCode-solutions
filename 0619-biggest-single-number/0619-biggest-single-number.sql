@@ -1,12 +1,2 @@
-SELECT num 
-FROM (
-    SELECT num 
-    FROM Mynumbers 
-    GROUP BY num 
-    HAVING COUNT(num) = 1 
-    ORDER BY num DESC 
-    LIMIT 1
-) AS subquery
-UNION ALL 
-SELECT NULL
-LIMIT 1;
+# Write your MySQL query statement below
+select num from (select (num) from Mynumbers group by num having count(num)=1 order by num desc limit 1) as subquery union all select null limit 1;
