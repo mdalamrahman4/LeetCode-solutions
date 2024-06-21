@@ -14,7 +14,7 @@ public:
                 if(grumpy[l]){
                     window-=customers[l];
                 }
-                l++;
+                ++l;
             }
             mxw=max(mxw,window);
         }
