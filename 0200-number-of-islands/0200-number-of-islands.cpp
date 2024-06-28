@@ -1,32 +1,9 @@
 class Solution {
 public:
-    void bfs(int row,int col,vector<vector<int>>&vis,vector<vector<char>>&grid){
-        queue<pair<int,int>>q;
-        q.push({row,col});
-        int n=grid.size();
-        int m=grid[0].size();
-        int delrow[]={-1,0,1,0};
-        int delcol[]={0,1,0,-1};
-        while(!q.empty()){
-            row=q.front().first;
-            col=q.front().second;
-            q.pop();
-            for(int i=0;i<4;i++){
-                    int nrow=row+delrow[i];
-                    int ncol=col+delcol[i];
-                    if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && vis[nrow][ncol]==0 && grid[nrow][ncol]=='1'){
-                        q.push({nrow,ncol});
-                        vis[nrow][ncol]=1;
-                    }
-            }
-        }
-    }
-  public:
-    // Function to find the number of islands.
+    void bfs(int row,int col,vector<vector<int>>&vis,vector<vector<char>>&grid);
     int numIslands(vector<vector<char>>& grid) {
-        // Code here
-        int n=grid.size();
-        int m=grid[0].size();
+        int n=grid.size(),m=grid[0].size();
+        queue<pair<int,int>>q;
         vector<vector<int>>vis(n,vector<int>(m,0));
         int cnt=0;
         for(int i=0;i<n;i++){
@@ -41,3 +18,24 @@ public:
         return cnt;
     }
 };
+void Solution:: bfs(int row,int col,vector<vector<int>>&vis,vector<vector<char>>&grid){
+            queue<pair<int,int>>q;
+            int n=grid.size(),m=grid[0].size();
+            q.push({row,col});
+            int delrow[]={-1,0,1,0};
+            int delcol[]={0,1,0,-1};
+            while(!q.empty()){
+                int x=q.front().first;
+                int y=q.front().second;
+                q.pop();
+                for(int i=0;i<4;i++){
+                    int nrow=x+delrow[i];
+                    int ncol=y+delcol[i];
+                    if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && vis[nrow][ncol]==0 &&
+                      grid[nrow][ncol]=='1'){
+                        vis[nrow][ncol]=1;
+                        q.push({nrow,ncol});
+                    }
+                }
+            }
+      }
