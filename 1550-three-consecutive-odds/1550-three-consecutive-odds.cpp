@@ -2,7 +2,7 @@ class Solution {
 public:
     bool threeConsecutiveOdds(vector<int>& arr) {
         int n=arr.size();
-        if(n<3) return 0;
+        if(n<3) return false;
         vector<int>oddy;
         for(int i=0;i<n;i++){
             if(arr[i]%2==1){
