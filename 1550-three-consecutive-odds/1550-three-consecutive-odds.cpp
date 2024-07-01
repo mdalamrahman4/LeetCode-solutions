@@ -3,15 +3,15 @@ public:
     bool threeConsecutiveOdds(vector<int>& arr) {
         int n=arr.size();
         if(n<3) return false;
-        vector<int>oddy;
+        int odds=0;
         for(int i=0;i<n;i++){
             if(arr[i]%2==1){
-                oddy.push_back(arr[i]);
+                odds++;
             }
             else{
-                oddy.clear();
+                odds=0;
             }
-            if(oddy.size()>=3)  return true;
+            if(odds>=3)  return true;
         }
         return false;
     }
