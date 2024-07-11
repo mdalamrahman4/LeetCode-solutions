@@ -9,7 +9,7 @@ public:
             }
             else if(s[i]==')'){
                 int beg=st.top();
-                reverse(s.begin()+beg,s.begin()+i);
+                reverse(s.begin()+beg+1,s.begin()+i);
                 st.pop();
             }
         }
