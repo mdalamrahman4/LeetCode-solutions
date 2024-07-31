@@ -1,26 +1,24 @@
+typedef vector<vector<int>> vv;
+typedef vector<int> v;
 class Solution {
 public:
-    void f(int ind,int sz,vector<int>&ds,vector<vector<int>>&ans,vector<int>&candidates,int target)
-    {
-        if(ind==sz)
-        {
-            if(target==0)
-            {
+    void f(int ind,int n,v &ds,vv &ans, v &candidates, int target){
+        if(ind==n){
+            if(target==0){
                 ans.push_back(ds);
             }
             return;
         }
-        if(candidates[ind]<=target)
-        {
+        if(candidates[ind]<=target){
             ds.push_back(candidates[ind]);
-            f(ind,sz,ds,ans,candidates,target-candidates[ind]);
+            f(ind,n,ds,ans,candidates,target-candidates[ind]);
             ds.pop_back();
         }
-        f(ind+1,sz,ds,ans,candidates,target);
+        f(ind+1,n,ds,ans,candidates,target);
     }
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<vector<int>>ans;
-        vector<int>ds;
+    vv combinationSum(v & candidates, int target) {
+        vv ans;
+        v ds;
         f(0,candidates.size(),ds,ans,candidates,target);
         return ans;
     }
