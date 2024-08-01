@@ -5,7 +5,7 @@ public:
         string word="";
         stack<string>st;
         for(int i=0;i<s.size();i++){
-            if(s[i]==' ' && word.size()>0 && word[0]!=' '){
+            if(s[i]==' ' && word.size()>0){
                 st.push(word);
                 word="";
             }
