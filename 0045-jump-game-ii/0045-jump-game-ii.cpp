@@ -7,6 +7,7 @@ public:
             for(int i=l;i<=r;i++){
                 farthest=max(farthest,i+nums[i]);
             }
+            if(farthest<=r) return -1;
             l=r+1;
             r=farthest;
             jumps++;
