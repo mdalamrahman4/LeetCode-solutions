@@ -4,13 +4,18 @@ public:
         int n=word1.size(),m=word2.size();
         vector<int>prev(m+1,0),curr(m+1,0);
         for(int j=0;j<=m;j++) prev[j]=j;
-        curr[0]=1;
-        for(int i=1;i<=n;i++){
+        for(int i=1;i<=n;i++)
+        {
             curr[0]=i;
-            for(int j=1;j<=m;j++){
-                if(word1[i-1]==word2[j-1]) curr[j]=prev[j-1];
+            for(int j=1;j<=m;j++)
+            {
+                if(word1[i-1]==word2[j-1])
+                    curr[j]=prev[j-1];
                 else{
-                    curr[j]=1+min(curr[j-1],min(prev[j],prev[j-1]));
+                int insert=curr[j-1];
+                int del=prev[j];
+                int rep=prev[j-1];
+                curr[j]= 1+min(insert,min(del,rep));
                 }
             }
             prev=curr;
