@@ -1,39 +1,38 @@
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
-        int n=grid.size();
-        int m=grid[0].size();
+        int n=grid.size(),m=grid[0].size();
+        int cnt=0,days=0;
         queue<pair<int,int>>q;
-        int days=0,tot=0,cnt=0;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(grid[i][j]!=0){
-                    tot++;
+                    cnt++;
                 }
                 if(grid[i][j]==2){
                     q.push({i,j});
                 }
             }
         }
-        int dx[]={1,0,-1,0};
-        int dy[]={0,-1,0,1};
+        int drow[]={-1,0,1,0};
+        int dcol[]={0,1,0,-1};
         while(!q.empty()){
             int k=q.size();
-            cnt+=k;
-            while(k--){
+            cnt-=k;
+            for(int i=0;i<k;i++){
                 int x=q.front().first;
                 int y=q.front().second;
                 q.pop();
                 for(int i=0;i<4;i++){
-                    int nx=x+dx[i];
-                    int ny=y+dy[i];
-                    if(nx<0 || ny<0 || nx>=n || ny>=m || grid[nx][ny]!=1 ) continue;
-                    grid[nx][ny]=2;
-                    q.push({nx,ny});
+                    int adjrow=x+drow[i];
+                    int adjcol=y+dcol[i];
+                    if(adjrow<0 || adjcol<0 || adjrow>=n || adjcol>=m || grid[adjrow][adjcol]!=1)   continue;
+                    grid[adjrow][adjcol]=2;
+                    q.push({adjrow,adjcol});
                 }
             }
-            if(!q.empty()) days++;
+            if(!q.empty())  days++;
         }
-        return ((tot==cnt)?days:-1);
+        return (cnt!=0)?-1:days;
     }
 };
