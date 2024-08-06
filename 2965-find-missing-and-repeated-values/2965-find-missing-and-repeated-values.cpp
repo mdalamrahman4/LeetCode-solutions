@@ -13,9 +13,7 @@ public:
                 }
             }
         }
-        int size=n*m;
-        int total=(size*(size+1))*0.5;
-        int missing=total-sum;
-        return {repeat,missing};
+        int total=(n*m*(n*m+1))/2;
+        return {repeat,total-sum};
     }
 };
