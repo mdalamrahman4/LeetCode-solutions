@@ -4,7 +4,7 @@ public:
     int k;
     KthLargest(int k, vector<int>& nums) {
         this->k=k;
-        for(int &it:nums){
+        for(int it:nums){
             pq.push(it);
             if(pq.size()>k){
                 pq.pop();
