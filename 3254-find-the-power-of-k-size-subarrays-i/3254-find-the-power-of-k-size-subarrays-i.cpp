@@ -9,13 +9,12 @@ public:
 
     vector<int> resultsArray(vector<int>& nums, int k) {
         int n = nums.size();
+        if(k==1)    return nums;
         vector<int> ans;
-
         for (int i = 0; i <= n - k; ++i) {
             int j = i + k - 1;
-
             if (issortedc(nums, i, j)) {
-                int mx = nums[i];  // Start with the first element of the current subarray
+                int mx = nums[i];  
                 for (int m = i + 1; m <= j; ++m) {
                     mx = max(mx, nums[m]);
                 }
