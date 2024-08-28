@@ -13,9 +13,9 @@ public:
             auto [x,y]=q.front();
             q.pop();
             if(grid1[x][y]!=1)  result=false;
-            for(int i=0;i<4;i++){
-                int newx=x+row[i];
-                int newy=y+col[i];
+            for(int k=0;k<4;k++){
+                int newx=x+row[k];
+                int newy=y+col[k];
                 if(newx>=0 && newx<n && newy>=0 && newy<m && grid2[newx][newy]==1){
                     grid2[newx][newy]=-1;
                     q.push({newx,newy});
