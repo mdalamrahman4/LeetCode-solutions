@@ -4,6 +4,7 @@ public:
         size_t sum=0;
         for(int i=0;i<chalk.size();i++){
             sum+=chalk[i];
+            if(sum>k)   break;
         }
         k=k%sum;
         for(int i=0;i<chalk.size();i++){
