@@ -4,7 +4,7 @@ public:
         int xr=start^goal;
         int cnt=0;
         while(xr){
-            cnt+=(xr&1);
+            if(xr&1)cnt++;
             xr=xr>>1;
         }
         return cnt;
