@@ -1,15 +1,16 @@
 class Solution {
 public:
     vector<int> xorQueries(vector<int>& arr, vector<vector<int>>& queries) {
-        int n=queries.size();
-        vector<int>xory;
-        for(auto it:queries){
-            int prev=0;
-            for(int i=it[0];i<=it[1];i++){
-                prev^=arr[i];
-            }
-            xory.push_back(prev);
+        int n=arr.size();
+        vector<int>prexor(n+1,0);
+        for(int i=1;i<=n;i++){
+            prexor[i]=prexor[i-1]^arr[i-1];
         }
-        return xory;
+        vector<int>ans;
+        for(int i=0;i<queries.size();i++){
+            int curr=prexor[queries[i][0]]^prexor[queries[i][1]+1];
+            ans.push_back(curr);
+        }
+        return ans;
     }
 };
