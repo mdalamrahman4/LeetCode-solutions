@@ -1,12 +1,14 @@
 class Solution {
 public:
     int countConsistentStrings(string allowed, vector<string>& words) {
-        vector<bool>freq(26,false);
+        int mask=0;
+        for(char &ch:allowed){
+            mask|=(1<<(ch-'a'));
+        }
         int cnt=0;
-        for(char c:allowed) freq[c-'a']=true;
-        for(string word:words){
-            for(char c:word)    {
-                if(!freq[c-'a']){
+        for(string &it:words){
+            for(char ch:it){
+                if((mask>>(ch-'a')&1)==0){
                     cnt++;
                     break;
                 }
