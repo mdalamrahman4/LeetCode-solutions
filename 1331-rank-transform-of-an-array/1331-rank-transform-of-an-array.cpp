@@ -12,12 +12,11 @@ public:
         ans[pq.top().second]=cnt;
         int prev=pq.top().first;
         pq.pop();
-        if(!pq.empty() && pq.top().first!=prev)    cnt++;
         while(!pq.empty()){
+            if(prev!=pq.top().first)  cnt++;
             ans[pq.top().second]=cnt;
             prev=pq.top().first;
             pq.pop();
-            if(prev!=pq.top().first)  cnt++;
         }
         return ans;
     }
