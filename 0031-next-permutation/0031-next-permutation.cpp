@@ -3,7 +3,7 @@ public:
     void nextPermutation(vector<int>& nums) {
         int ind=-1,n=nums.size();
         for(int i=n-2;i>=0;i--){
-            if(nums[i]<nums[i+1])  {
+            if(nums[i]<nums[i+1]){
                 ind=i;
                 break;
             }
@@ -12,7 +12,7 @@ public:
             reverse(nums.begin(),nums.end());
             return;
         }
-        for(int i=n-1;i>ind;i--){
+        for(int i=n-1;i>=ind+1;i--){
             if(nums[i]>nums[ind]){
                 swap(nums[i],nums[ind]);
                 break;
