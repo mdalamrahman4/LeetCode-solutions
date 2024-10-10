@@ -11,6 +11,6 @@ public:
             rev=rev*10+rem;
             no/=10;
         }
-        return (x<no)?rev*-1:rev;
+        return (x<0)?rev*-1:rev;
     }
 };
