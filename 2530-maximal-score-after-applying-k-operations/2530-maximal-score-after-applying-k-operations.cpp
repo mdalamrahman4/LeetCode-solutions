@@ -6,9 +6,8 @@ public:
         while(k--){
             int no=pq.top();
             sum+=no;
-            no=ceil(no/3.0);
             pq.pop();
-            pq.push(no);
+            pq.push((no+2)/3);
         }
         return sum;
     }
