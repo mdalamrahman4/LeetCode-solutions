@@ -22,7 +22,7 @@ public:
                 int nxtcnt=pq.top().first;
                 char nxtchar=pq.top().second;
                 pq.pop();
-                res+=nxtchar;
+                res.push_back(nxtchar);
                 nxtcnt--;
                 if(nxtcnt>0){
                     pq.push({nxtcnt,nxtchar});
@@ -30,7 +30,7 @@ public:
             }
             else{
                 currcnt--;
-                res+=currchar;
+                res.push_back(currchar);
             }
             if(currcnt>0){
                 pq.push({currcnt,currchar});
