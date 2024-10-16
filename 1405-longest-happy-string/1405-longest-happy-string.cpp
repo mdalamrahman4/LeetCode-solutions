@@ -15,12 +15,12 @@ public:
         string res="";
         while(!pq.empty()){
             int currcnt=pq.top().first;
-            int currchar=pq.top().second;
+            char currchar=pq.top().second;
             pq.pop();
             if(res.size()>=2 && res[res.size()-1]==currchar && res[res.size()-2]==currchar){
                 if(pq.empty())  break;
                 int nxtcnt=pq.top().first;
-                int nxtchar=pq.top().second;
+                char nxtchar=pq.top().second;
                 pq.pop();
                 res.push_back(nxtchar);
                 nxtcnt--;
