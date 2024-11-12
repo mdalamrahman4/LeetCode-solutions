@@ -6,18 +6,15 @@ public:
         f(0,ans,nums);
         return ans;
     }
-    void f(int n,vector<vector<int>>&ans,vector<int>&nums)
-    {
-        if(n==nums.size())
-        {
+    void f(int ind,vector<vector<int>>&ans,vector<int>&nums){
+        if(ind==nums.size()){
             ans.push_back(nums);
             return;
         }
-        for(int i=n;i<nums.size();i++)
-        {
-            swap(nums[n],nums[i]);
-            f(n+1,ans,nums);
-            swap(nums[n],nums[i]);
+        for(int i=ind;i<nums.size();i++){
+            swap(nums[ind],nums[i]);
+            f(ind+1,ans,nums);
+            swap(nums[ind],nums[i]);
         }
     }
 };
