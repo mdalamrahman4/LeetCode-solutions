@@ -18,7 +18,7 @@ public:
         q.push(root);
         while(!q.empty()){
             int sz=q.size();
-            int mx=INT_MIN;
+            int mx=q.front()->val;
             for(int i=0;i<sz;i++){
                 TreeNode*ptr=q.front();
                 q.pop();
