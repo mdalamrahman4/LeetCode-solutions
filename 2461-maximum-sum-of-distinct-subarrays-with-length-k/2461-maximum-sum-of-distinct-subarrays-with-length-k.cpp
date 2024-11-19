@@ -2,14 +2,13 @@ class Solution {
 public:
     long long maximumSubarraySum(vector<int>& nums, int k) {
         unordered_map<int,int>mp;
-        long long sum=0,mxsum=0;
-        int i=0,n=nums.size();
+        long long mx=0,n=nums.size(),sum=0,i=0;
         for(int j=0;j<n;j++){
             sum+=nums[j];
             mp[nums[j]]++;
             if(j-i+1==k){
                 if(mp.size()==k){
-                    mxsum=max(mxsum,sum);
+                    mx=max(mx,sum);
                 }
                 sum-=nums[i];
                 mp[nums[i]]--;
@@ -17,6 +16,6 @@ public:
                 i++;
             }
         }
-        return mxsum;
+        return mx;
     }
 };
